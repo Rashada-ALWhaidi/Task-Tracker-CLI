@@ -181,3 +181,31 @@ export function markDone(id){
    console.log("Done");
 
 }
+
+export function listAllDone(){
+  //To check if the file exists or not, if not we will create a file 
+  if (!fs.existsSync(path)) {
+    fs.writeFileSync(path, JSON.stringify([]));
+  }
+
+  // Reading the file content and converting it to an array
+  const data = fs.readFileSync(path, "utf-8");
+  const tasksArray = JSON.parse(data);
+
+   // if there is no Tasks
+  if (tasksArray.length === 0) {
+    console.log("No tasks found");
+    return;
+  }
+
+  //Task filtering
+const doneTasks = tasksArray.filter(task => task.status === "Done");
+if(doneTasks.length === 0) {
+        console.log(" No tasks are marked as done");
+        return;
+    }
+console.log("Done Tasks: ");
+    doneTasks.forEach(task => {
+        console.log(`ID: ${task.id}, Description: ${task.description}, UpdatedAt: ${task.updatedAt}`);
+    });
+}
