@@ -100,3 +100,27 @@ export function deleteTask(id){
 
    console.log(deleteTask);
 }
+
+
+export function listTasks() {
+  //To check if the file exists or not, if not we will create a file 
+  if (!fs.existsSync(path)) {
+    fs.writeFileSync(path, JSON.stringify([]));
+  }
+
+  // Reading the file content and converting it to an array
+  const data = fs.readFileSync(path, "utf-8");
+  const tasksArray = JSON.parse(data);
+
+  // if there is no Tasks
+  if (tasksArray.length === 0) {
+    console.log("No tasks found");
+    return;
+  }
+
+  // List Tasks
+  console.log("All Tasks: ");
+  tasksArray.forEach(task => {
+    console.log(`ID: ${task.id} | Description: ${task.description} | Status: ${task.status}`);
+  });
+}

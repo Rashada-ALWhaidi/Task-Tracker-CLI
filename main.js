@@ -35,7 +35,7 @@ case "delete":
         service.deleteTask(Number(args[1]));
         break;
 case "list":
-        service.listTask();
+        service.listTasks();
         break;    
 case "mark-in-progress":
         service.markInProgress(Number(args[1]));
