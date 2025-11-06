@@ -204,6 +204,8 @@ if(doneTasks.length === 0) {
         console.log(" No tasks are marked as done");
         return;
     }
+
+    
 console.log("Done Tasks: ");
     doneTasks.forEach(task => {
         console.log(`          ID: ${task.id},
@@ -237,6 +239,8 @@ if(notDoneTasks.length === 0) {
         console.log("There is No Tasks");
         return;
     }
+
+
 console.log(" Not Done Tasks (todo Tasks) : ", );
      notDoneTasks.forEach(task => {
         console.log(`          ID: ${task.id},
