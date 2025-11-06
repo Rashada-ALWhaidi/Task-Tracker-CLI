@@ -206,6 +206,43 @@ if(doneTasks.length === 0) {
     }
 console.log("Done Tasks: ");
     doneTasks.forEach(task => {
-        console.log(`ID: ${task.id}, Description: ${task.description}, UpdatedAt: ${task.updatedAt}`);
+        console.log(`          ID: ${task.id},
+          Description: ${task.description},
+          UpdatedAt: ${task.updatedAt} , 
+          ----------------------------------------`
+        )
+          
     });
 }
+
+export function listAllNotDone(){
+  //To check if the file exists or not, if not we will create a file 
+  if (!fs.existsSync(path)) {
+    fs.writeFileSync(path, JSON.stringify([]));
+  }
+
+  // Reading the file content and converting it to an array
+  const data = fs.readFileSync(path, "utf-8");
+  const tasksArray = JSON.parse(data);
+
+   // if there is no Tasks
+  if (tasksArray.length === 0) {
+    console.log("No tasks found");
+    return;
+  }
+
+  //Task filtering
+const notDoneTasks = tasksArray.filter(task => task.status === "todo");
+if(notDoneTasks.length === 0) {
+        console.log("There is No Tasks");
+        return;
+    }
+console.log(" Not Done Tasks (todo Tasks) : ", );
+     notDoneTasks.forEach(task => {
+        console.log(`          ID: ${task.id},
+          Description: ${task.description},
+          UpdatedAt: ${task.updatedAt},
+          ----------------------------------------`);
+    });
+}
+
