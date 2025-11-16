@@ -1,5 +1,5 @@
 
-// app.js is the interface of the project
+//main.js is the interface of the project
 
 import * as service from "./Tasks/Tasks-service.js";
 
